@@ -67,7 +67,8 @@ class RegionController extends Controller
      */
     public function edit($id)
     {
-        return "Je prends detatils sur une regions";
+        $region = Region::find($id);
+        return view('region.edit', compact('region'));
     }
 
     /**
@@ -79,7 +80,12 @@ class RegionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $region = Region::find($id);
+        $region->nom = $request->nom;
+        $region->supperfice = $request->supperfice;
+        $region->save();
+        $region->update($request->all());
+        return redirect('regions')->with(["status" => "Region modifier avec succees"]);
     }
 
     /**

@@ -31,7 +31,7 @@
                 <td>{{$region->nom}}</td>
                 <td>{{$region->supperfice}}</td>
                 <td class="text-center"><a href=""><i class="bi bi-eye-fill" style="font-size: 1.5rem;"></i></a></td>
-                <td class="text-center"><a href=""><i class="bi bi-pencil-square" style="font-size: 1.5rem;"></i></a></td>
+                <td class="text-center"><a href="{{ route ('regions.edit',$region->id) }}"><i class="bi bi-pencil-square" style="font-size: 1.5rem;"></i></a></td>
                 <td>
                     <form method="POST" action="{{ route ('regions.destroy',$region->id)}}">
                         @csrf
