@@ -78,13 +78,18 @@ class RegionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Region $region)
     {
-        $region = Region::find($id);
+        // $region = Region::find($id);
         $region->nom = $request->nom;
         $region->supperfice = $request->supperfice;
         $region->save();
-        $region->update($request->all());
+        $request->validate([
+            'nom' => 'required|max:100',
+            'supperfice' => 'required|max:10'
+        ]);
+        // $region->update($request->all());
+        $region->update();
         return redirect('regions')->with(["status" => "Region modifier avec succees"]);
     }
 

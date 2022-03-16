@@ -14,11 +14,6 @@
                 <h3 class="text-center">Ajouter une region</h3>
                 <form action="{{ route ('regions.store') }}" method="POST">
                     @csrf
-                    @if(session('status'))
-                    <div class="alert alert-success">
-                        {{session('status')}}
-                    </div>
-                    @endif
                     <div class="mb-3">
                         <label for="nom" class="form-label">Nom de la region</label>
                         <input type="text" class="form-control" name="nom" id="nom" aria-describedby="emailHelp">

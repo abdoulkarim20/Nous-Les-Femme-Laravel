@@ -36,7 +36,7 @@
                     <form method="POST" action="{{ route ('regions.destroy',$region->id)}}">
                         @csrf
                         @method('DELETE')
-                        <button>delete</i></button>
+                        <button>delete</button>
                     </form>
                 </td>
             </tr>
