@@ -8,6 +8,23 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg" style="background-color: #ce0033;">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white" href="index.html">
+                <h3>OGC Nous le femmes</h3>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <!-- <a class="navbar-brand text-white mx-2" id="add-app" aria-current="page" href="">Ajouter un apprenant</a> -->
+                    <a class="navbar-brand text-white mx-2" id="liste-section" aria-current="page" href="{{ route ('regions.create') }}">Ajouter une region</a>
+                    <!-- <a href="liste.html" class="btn btn-primary mt-5"></a> -->
+                </div>
+            </div>
+        </div>
+    </nav>
     <main class="container">
         <div class="row mt-5">
             <div class="col-6">
