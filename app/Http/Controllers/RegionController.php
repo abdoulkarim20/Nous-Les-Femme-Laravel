@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Departement;
 use App\Models\Region;
 use Illuminate\Http\Request;
 
@@ -53,10 +54,12 @@ class RegionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Region $region, Departement $departement)
     {
-        $region = Region::find($id);
-        return $region;
+        //Ici je veux recuperer tous les departements associer a la regions 33;
+        $departementsRegion = Region::find(33)->departements;
+
+        return view('region.detail', compact('departementsRegion'));
     }
 
     /**

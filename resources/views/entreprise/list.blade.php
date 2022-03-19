@@ -38,21 +38,43 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Nom de la Region</th>
-                    <th scope="col">Superficie de la Region</th>
+                    <th scope="col">Nom de l’entreprise</th>
+                    <th scope="col">Date de création</th>
+                    <th scope="col">Quartier</th>
+                    <th scope="col">Siège Social</th>
+                    <th scope="col">Nom du Répondant</th>
+                    <th scope="col">Prénom du Répondant</th>
+                    <th scope="col">Telephone du repondant</th>
                     <th scope="col" colspan="3" class="text-center">Actions</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($regions as $region)
+                @foreach($entreprises as $entreprise)
                 <tr>
-                    <td>{{$region->id}}</td>
-                    <td>{{$region->nom}}</td>
-                    <td>{{$region->supperfice}}</td>
+                    <td>{{$entreprise->id}}</td>
+                    <td>{{$entreprise->nomEntreprise}}</td>
+                    <td>{{$entreprise->dateCreation}}</td>
+                    <td>{{$entreprise->quartier->nom}}</td>
+                    <td>{{$entreprise->siegeSociale}}</td>
+                    <td>{{$entreprise->repondant->nom}}</td>
+                    <td>{{$entreprise->repondant->prenoms}}</td>
+                    <!-- <td>{{$entreprise->conrdonneeGPS}}</td>
+                    <td>{{$entreprise->registreCommerce}}</td>
+                    <td>{{$entreprise->NINEA}}</td>
+                    <td>{{$entreprise->pageWeb}}</td>
+                    <td>{{$entreprise->contratFormel}}</td>
+                    <td>{{$entreprise->organigrammeRespecter}}</td>
+                    <td>{{$entreprise->dispositifFormation}}</td>
+                    <td>{{$entreprise->questionSociale}}</td> -->
+                    <td>{{$entreprise->quartier->commune->nom}}</td>
+                    <td>{{$entreprise->quartier->commune->departement->nom}}</td>
+                    <td>{{$entreprise->quartier->commune->departement->region->nom}}</td>
+                    <td>{{$entreprise->domaine->nom}}</td>
+                    <td>{{$entreprise->regime_juridique->nom}}</td>
                     <td class="text-center"><a href=""><i class="bi bi-eye-fill" style="font-size: 1.5rem;"></i></a></td>
-                    <td class="text-center"><a href="{{ route ('regions.edit',$region->id) }}"><i class="bi bi-pencil-square" style="font-size: 1.5rem;"></i></a></td>
+                    <td class="text-center"><a href=""><i class="bi bi-pencil-square" style="font-size: 1.5rem;"></i></a></td>
                     <td class="text-center">
-                        <form method="POST" action="{{ route ('regions.destroy',$region->id)}}">
+                        <form method="POST" action="">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger icon-save">Delete</button>
