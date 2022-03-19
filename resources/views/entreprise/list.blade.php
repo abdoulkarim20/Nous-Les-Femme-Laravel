@@ -20,7 +20,7 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <!-- <a class="navbar-brand text-white mx-2" id="add-app" aria-current="page" href="">Ajouter un apprenant</a> -->
-                    <a class="navbar-brand text-white mx-2" id="liste-section" aria-current="page" href="{{ route ('regions.create') }}">Ajouter une region</a>
+                    <a class="navbar-brand text-white mx-2" id="liste-section" aria-current="page" href="{{ route ('entreprises.create') }}">Ajouter une Entreprise</a>
                     <!-- <a href="liste.html" class="btn btn-primary mt-5"></a> -->
                 </div>
             </div>
@@ -71,14 +71,13 @@
                     <td>{{$entreprise->quartier->commune->departement->region->nom}}</td> -->
                     <td>{{$entreprise->repondant->telephone}}</td>
                     <!-- <td>{{$entreprise->regime_juridique->nom}}</td> -->
-                    <td class="text-center"><a href=""><i class="bi bi-eye-fill" style="font-size: 1.5rem;"></i></a></td>
-                    <td class="text-center"><a href=""><i class="bi bi-pencil-square" style="font-size: 1.5rem;"></i></a></td>
+                    <td class="text-center"><a href="{{route('entreprises.show',$entreprise->id)}}"><i class="bi bi-eye-fill" style="font-size: 1.5rem;"></i></a></td>
+                    <td class="text-center"><a href="{{route('entreprises.edit',$entreprise->id)}}"><i class="bi bi-pencil-square" style="font-size: 1.5rem;"></i></a></td>
                     <td class="text-center">
                         <form method="POST" action="{{route('entreprises.destroy',$entreprise->id)}}">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger icon-save">Delete</button>
-                            <!-- <input type="submit" value="Delete" style="border-color: transparent; color:#ce0033"> -->
                         </form>
                     </td>
                 </tr>

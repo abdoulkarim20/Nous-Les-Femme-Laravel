@@ -32,43 +32,45 @@
                 <h4 class="text-black text-center m-b-0">Formulaire pour repondre aux questions d'enquettes</h4>
             </div>
             <div class="card-body">
-                <form action="{{ route ('entreprises.store')}}" method="POST">
+                <form action="{{ route ('entreprises.update',$entreprise->id)}}" method="POST">
                     @csrf
+                    @method('PATCH')
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group mb-3">
                                 <label for="Nom de l’entreprise">Nom de l’entreprise</label>
-                                <input type="text" class="form-control" name="nomEntreprise" value="" id="Nom de l’entreprise">
+                                <input type="text" class="form-control" name="nomEntreprise" value="{{$entreprise->nomEntreprise}}" id="Nom de l’entreprise">
                             </div>
                             <div class="form-group mb-3">
                                 <label for="coordonnees">Coordonnée GPS</label>
-                                <input type="text" class="form-control" name="conrdonneeGPS" value="" id="coordonnees">
+                                <input type="text" class="form-control" name="conrdonneeGPS" value="{{$entreprise->conrdonneeGPS}}" id="coordonnees">
                             </div>
                             <div class="form-group mb-3">
                                 <label for="siege">Siège Social</label>
-                                <input type="text" class="form-control" name="siegeSociale" value="" id="siege">
+                                <input type="text" class="form-control" name="siegeSociale" value="{{$entreprise->siegeSociale}}" id="siege">
                             </div>
                             <div class="form-group mb-3">
                                 <label for="dateentreprise">Quelle est la date de création de votre entreprise ?</label>
-                                <input type="date" class="form-control" name="dateCreation" value="" id="dateentreprise">
+                                <input type="date" class="form-control" name="dateCreation" value="{{$entreprise->dateCreation}}" id="dateentreprise">
                             </div>
                             <div class="form-group mb-3">
                                 <label for="registre">registre de commerce</label>
-                                <input type="text" class="form-control" name="registreCommerce" value="" id="registre">
+                                <input type="text" class="form-control" name="registreCommerce" value="{{$entreprise->registreCommerce}}" id="registre">
                             </div>
                             <div class="form-group mb-3">
                                 <label for="ninea entreprise">Le NINEA de votre entreprise</label>
-                                <input type="text" class="form-control" name="NINEA" value="" id="exampleInputEmail1">
+                                <input type="text" class="form-control" name="NINEA" value="{{$entreprise->NINEA}}" id="exampleInputEmail1">
                             </div>
                             <div class="form-group mb-3">
                                 <label for="pageWeb">Page Web de votre entreprise</label>
-                                <input type="text" class="form-control" name="pageWeb" value="" id="pageWeb">
+                                <input type="text" class="form-control" name="pageWeb" value="{{$entreprise->pageWeb}}" id="pageWeb">
                             </div>
                             <div>
                                 <label>Quel est le nombre d'employées? :</label>
                                 <select class="form-select" name="nombreEmployer">
-                                    <option value="1 a 5">01 à 05</option>
-                                    <option value="5 a 15">05 à 15</option>
+                                    <option value="{{$entreprise->nombreEmployer}}" selected></option>
+                                    <option value="1 a 5">1 à 5</option>
+                                    <option value="5 a 15">5 à 15</option>
                                     <option value="plus">plus</option>
                                 </select>
                             </div>
@@ -77,6 +79,7 @@
                             <div class="mb-3">
                                 <label>Ont-ils des contrats formel? :</label>
                                 <select class="form-select" name="contratFormel">
+                                    <option value="{{$entreprise->contratFormel}}" selected></option>
                                     <option value="1">Oui</option>
                                     <option value="0">Non</option>
                                 </select>
@@ -84,6 +87,7 @@
                             <div class="mb-3">
                                 <label>Existe t-il un organigramme claire et respecté ? :</label>
                                 <select class="form-select" name="organigrammeRespecter">
+                                    <option value="{{$entreprise->organigrammeRespecter}}" selected></option>
                                     <option value="1">Oui</option>
                                     <option value="0">Non</option>
                                 </select>
@@ -91,6 +95,7 @@
                             <div class="mb-3">
                                 <label>Existe t-il un dispositif de formation du personnel ? :</label>
                                 <select class="form-select" name="dispositifFormation">
+                                    <option value="{{$entreprise->dispositifFormation}}" selected></option>
                                     <option value="1">Oui</option>
                                     <option value="0">Non</option>
                                 </select>
@@ -98,38 +103,43 @@
                             <div class="mb-3">
                                 <label>Votre entreprise prend-elle en compte les quotisations sociales et patronale ? :</label>
                                 <select class="form-select" name="questionSociale">
+                                    <option value="{{$entreprise->questionSociale}}" selected></option>
                                     <option value="1">Oui</option>
                                     <option value="0">Non</option>
                                 </select>
                             </div>
 
                             <div class="mb-3">
+                                <label for="ninea entreprise">Dans quel Quartier se trouve l'entreprise</label>
                                 <select class="form-select" name="quartier_id">
-                                    <option selected class="form-group">Dans quel Quartier se trouve l'entreprise</option>
+                                    <option selected class="form-group" value="{{$entreprise->quartier->id}}">{{$entreprise->quartier->nom}}</option>
                                     @foreach ($quartiers as $quartier)
                                     <option class="form-group" value="{{$quartier->id}}">{{$quartier->nom}}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="mb-3">
+                                <label for="ninea entreprise">Domaine d'activite de l'entreprise</label>
                                 <select class="form-select" name="domaine_id">
-                                    <option selected class="form-group">Domaine d'activite de l'entreprise</option>
+                                    <option selected class="form-group" value="{{$entreprise->domaine->id}}">{{$entreprise->domaine->nom}}</option>
                                     @foreach ($domaines as $domaine)
                                     <option class="form-group" value="{{$domaine->id}}">{{$domaine->nom}}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="mb-3">
+                                <label for="ninea entreprise">Numero telephone du repondant</label>
                                 <select class="form-select" name="repondant_id">
-                                    <option selected class="form-group">Numero telephone du repondant</option>
+                                    <option selected class="form-group" value="{{$entreprise->repondant->id}}">{{$entreprise->repondant->telephone}}</option>
                                     @foreach ($repondants as $repondant)
                                     <option class="form-group" value="{{$repondant->id}}">{{$repondant->telephone}}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="mb-4">
+                                <label for="ninea entreprise">Regime juridique de l'entreprise</label>
                                 <select class="form-select" name="regime_juridique_id">
-                                    <option selected class="form-group">Regime juridique de l'entreprise</option>
+                                    <option selected class="form-group" value="{{$entreprise->regime_juridique->id}}">{{$entreprise->regime_juridique->nom}}</option>
                                     @foreach ($regime_juridiques as $regime_juridique)
                                     <option class="form-group" value="{{$regime_juridique->id}}">{{$regime_juridique->nom}}</option>
                                     @endforeach

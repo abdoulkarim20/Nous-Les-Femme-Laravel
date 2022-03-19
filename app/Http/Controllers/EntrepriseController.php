@@ -74,9 +74,10 @@ class EntrepriseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Entreprise $entreprise)
     {
-        //
+        $entreprise->find($entreprise);
+        return view('entreprise.detail', compact('entreprise'));
     }
 
     /**
@@ -85,9 +86,14 @@ class EntrepriseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Entreprise $entreprise)
     {
-        //
+        $quartiers = Quartier::all();
+        $repondants = Repondant::all();
+        $domaines = Domaine::all();
+        $regime_juridiques = RegimeJuridique::all();
+        $entreprise->find($entreprise);
+        return view('entreprise.edit', compact('entreprise', 'quartiers', 'repondants', 'domaines', 'entreprise', 'regime_juridiques'));
     }
 
     /**
@@ -97,9 +103,30 @@ class EntrepriseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Entreprise $entreprise)
     {
-        //
+        $entreprise->nomEntreprise = $request->nomEntreprise;
+        $entreprise->conrdonneeGPS = $request->conrdonneeGPS;
+        $entreprise->siegeSociale = $request->siegeSociale;
+        $entreprise->dateCreation = $request->dateCreation;
+        $entreprise->registreCommerce = $request->registreCommerce;
+        $entreprise->NINEA = $request->NINEA;
+        $entreprise->pageWeb = $request->pageWeb;
+        $entreprise->nombreEmployer = $request->nombreEmployer;
+        $entreprise->contratFormel = $request->contratFormel;
+        $entreprise->organigrammeRespecter = $request->organigrammeRespecter;
+        $entreprise->dispositifFormation = $request->dispositifFormation;
+        $entreprise->questionSociale = $request->questionSociale;
+        $entreprise->quartier_id = $request->quartier_id;
+        $entreprise->domaine_id = $request->domaine_id;
+        $entreprise->repondant_id = $request->repondant_id;
+        $entreprise->regime_juridique_id = $request->regime_juridique_id;
+        $entreprise->update();
+        if ($entreprise) {
+            return redirect('entreprises')->with(['status' => 'Modification effectuer']);
+        } else {
+            return redirect('entreprises.edit')->with(['status' => 'Modification non effectuer']);
+        }
     }
 
     /**
@@ -111,6 +138,6 @@ class EntrepriseController extends Controller
     public function destroy(Entreprise $entreprise)
     {
         $entreprise->delete();
-        return redirect('entreprises')->with(['status' => "Entreprise supprimer avec succes"]);
+        return redirect('entreprises')->with(['status' => "Entreprise supprimer"]);
     }
 }
