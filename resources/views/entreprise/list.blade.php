@@ -12,7 +12,7 @@
     <nav class="navbar navbar-expand-lg" style="background-color: #ce0033;">
         <div class="container-fluid">
             <a class="navbar-brand text-white" href="index.html">
-                <h3>OGC Nous le femmes</h3>
+                <h3 class="mx-5">OGC Nous le femmes</h3>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -27,7 +27,7 @@
         </div>
     </nav>
     <div class="container mt-5">
-        <!-- <h4 class="text-center">La liste des Regions</h4> -->
+        <!-- <h4 class="text-center">La liste des Entreprises</h4> -->
         @if(session('status'))
         <div class="alert alert-success">
             {{session('status')}}
@@ -66,15 +66,15 @@
                     <td>{{$entreprise->organigrammeRespecter}}</td>
                     <td>{{$entreprise->dispositifFormation}}</td>
                     <td>{{$entreprise->questionSociale}}</td> -->
-                    <td>{{$entreprise->quartier->commune->nom}}</td>
+                    <!-- <td>{{$entreprise->quartier->commune->nom}}</td>
                     <td>{{$entreprise->quartier->commune->departement->nom}}</td>
-                    <td>{{$entreprise->quartier->commune->departement->region->nom}}</td>
-                    <td>{{$entreprise->domaine->nom}}</td>
-                    <td>{{$entreprise->regime_juridique->nom}}</td>
+                    <td>{{$entreprise->quartier->commune->departement->region->nom}}</td> -->
+                    <td>{{$entreprise->repondant->telephone}}</td>
+                    <!-- <td>{{$entreprise->regime_juridique->nom}}</td> -->
                     <td class="text-center"><a href=""><i class="bi bi-eye-fill" style="font-size: 1.5rem;"></i></a></td>
                     <td class="text-center"><a href=""><i class="bi bi-pencil-square" style="font-size: 1.5rem;"></i></a></td>
                     <td class="text-center">
-                        <form method="POST" action="">
+                        <form method="POST" action="{{route('entreprises.destroy',$entreprise->id)}}">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger icon-save">Delete</button>

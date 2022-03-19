@@ -23,7 +23,7 @@ class CreateEntreprisesTable extends Migration
             $table->string('registreCommerce');
             $table->string('NINEA');
             $table->string('pageWeb');
-            $table->integer('nombreEmployer');
+            $table->string('nombreEmployer',20);
             $table->boolean('contratFormel');
             $table->boolean('organigrammeRespecter');
             $table->boolean('dispositifFormation');

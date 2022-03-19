@@ -7,7 +7,25 @@ use Illuminate\Database\Eloquent\Model;
 
 class Entreprise extends Model
 {
-    protected $fillable = ['nom'];
+    protected $fillable = [
+        'nom',
+        'nomEntreprise',
+        'conrdonneeGPS',
+        'siegeSociale',
+        'dateCreation',
+        'registreCommerce',
+        'NINEA',
+        'pageWeb',
+        'nombreEmployer',
+        'contratFormel',
+        'organigrammeRespecter',
+        'dispositifFormation',
+        'questionSociale',
+        'quartier_id',
+        'domaine_id',
+        'repondant_id',
+        'regime_juridique_id'
+    ];
     public function domaine()
     {
         return $this->belongsTo(Domaine::class);

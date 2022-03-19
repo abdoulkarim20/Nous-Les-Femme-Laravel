@@ -12,7 +12,6 @@ class QuartierController extends Controller
         $quartiers = Quartier::all();
         return view('quartier.list', compact('quartiers'));
     }
-
     public function create()
     {
         return "Je suis la pour afficher le forumulaire de quartier";
