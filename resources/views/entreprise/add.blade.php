@@ -67,8 +67,9 @@
                             <div>
                                 <label>Quel est le nombre d'employées? :</label>
                                 <select class="form-select" name="nombreEmployer">
-                                    <option value="1 a 5">01 à 05</option>
-                                    <option value="5 a 15">05 à 15</option>
+                                    <option value="1" selected></option>
+                                    <option value="1 a 5">1 à 5</option>
+                                    <option value="5 a 15">5 à 15</option>
                                     <option value="plus">plus</option>
                                 </select>
                             </div>
@@ -77,6 +78,7 @@
                             <div class="mb-3">
                                 <label>Ont-ils des contrats formel? :</label>
                                 <select class="form-select" name="contratFormel">
+                                    <option value="1" selected></option>
                                     <option value="1">Oui</option>
                                     <option value="0">Non</option>
                                 </select>
@@ -84,6 +86,7 @@
                             <div class="mb-3">
                                 <label>Existe t-il un organigramme claire et respecté ? :</label>
                                 <select class="form-select" name="organigrammeRespecter">
+                                    <option value="1" selected></option>
                                     <option value="1">Oui</option>
                                     <option value="0">Non</option>
                                 </select>
@@ -91,6 +94,7 @@
                             <div class="mb-3">
                                 <label>Existe t-il un dispositif de formation du personnel ? :</label>
                                 <select class="form-select" name="dispositifFormation">
+                                    <option value="1" selected></option>
                                     <option value="1">Oui</option>
                                     <option value="0">Non</option>
                                 </select>
@@ -98,38 +102,43 @@
                             <div class="mb-3">
                                 <label>Votre entreprise prend-elle en compte les quotisations sociales et patronale ? :</label>
                                 <select class="form-select" name="questionSociale">
+                                    <option value="1" selected></option>
                                     <option value="1">Oui</option>
                                     <option value="0">Non</option>
                                 </select>
                             </div>
 
                             <div class="mb-3">
+                                <label>Dans quel Quartier se trouve l'entreprise</label>
                                 <select class="form-select" name="quartier_id">
-                                    <option selected class="form-group">Dans quel Quartier se trouve l'entreprise</option>
+                                    <option selected class="form-group"></option>
                                     @foreach ($quartiers as $quartier)
                                     <option class="form-group" value="{{$quartier->id}}">{{$quartier->nom}}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="mb-3">
+                                <label for="ninea entreprise">Domaine d'activite de l'entreprise</label>
                                 <select class="form-select" name="domaine_id">
-                                    <option selected class="form-group">Domaine d'activite de l'entreprise</option>
+                                    <option selected class="form-group"></option>
                                     @foreach ($domaines as $domaine)
                                     <option class="form-group" value="{{$domaine->id}}">{{$domaine->nom}}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="mb-3">
+                                <label for="ninea entreprise">Numero telephone du repondant</label>
                                 <select class="form-select" name="repondant_id">
-                                    <option selected class="form-group">Numero telephone du repondant</option>
+                                    <option selected class="form-group"></option>
                                     @foreach ($repondants as $repondant)
                                     <option class="form-group" value="{{$repondant->id}}">{{$repondant->telephone}}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="mb-4">
+                                <label for="ninea entreprise">Regime juridique de l'entreprise</label>
                                 <select class="form-select" name="regime_juridique_id">
-                                    <option selected class="form-group">Regime juridique de l'entreprise</option>
+                                    <option selected class="form-group"></option>
                                     @foreach ($regime_juridiques as $regime_juridique)
                                     <option class="form-group" value="{{$regime_juridique->id}}">{{$regime_juridique->nom}}</option>
                                     @endforeach
@@ -139,11 +148,11 @@
                     </div>
                     <div class="my-2 text-center">
                         <button type="submit" class="btn btn-success">Enregistrer</button>
-                        <a class="btn btn-danger" href="?route=Organisation&module=list">Annuler</a>
+                        <a class="btn btn-danger" href="{{route ('entreprises.index')}}">Annuler</a>
                     </div>
                 </form>
                 <h5 class="text-black mt-3 text-center">* Tous les champs sont oligatoires</h5>
             </div>
         </div>
     </div>
-    </div>
+    </div>fish killer
