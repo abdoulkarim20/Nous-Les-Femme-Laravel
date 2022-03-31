@@ -37,7 +37,7 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group mb-3">
-                                <label for="Nom de l’entreprise">Nom de l’entreprise</label>
+                                <label for="Nom de l’entreprise">Nom de l’entreprises</label>
                                 <input type="text" class="form-control" name="nomEntreprise" value="" id="Nom de l’entreprise">
                             </div>
                             <div class="form-group mb-3">
